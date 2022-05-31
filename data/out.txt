@@ -1,0 +1,51 @@
+\section{Affine Images}
+\section{Anticevian}
+\section{Area Invariants}
+\section{Bicentric Family}
+\section{Brocard}
+\section{Cayley-Poncelet}
+\section{Convex Combinations}
+\section{Cross-Ratio Invariants}
+\section{Early Results}
+\section{Ellipse-Inscribed Triangles}
+\section{Ellipse Echoes}
+\section{Envelopes}
+\section{Frégier}
+\section{Harmonic Polygons}
+\section{Homothetic Pair}
+\section{Hyperbolic Billiard}
+\section{IMPA 33o CBM}
+\section{In- and Circum-parabolas}
+\section{Inconics & Circumconics}
+\section{Inversions of Pivoting Triangles}
+\section{Inversive Poncelet}
+\section{Isodynamic Points}
+\section{Isogonal and Isotomic}
+\section{Isogonals over Poncelet}
+\section{Locus App}
+\section{Misc}
+\section{Multiple Caustics}
+\section{N-Point Porisms}
+\section{N=3 Loci}
+\section{N>3 Periodics}
+\section{Original 2011}
+\section{Orthic Phenomena}
+\section{Pedal Invariants}
+\section{Pencil of Circles}
+\section{Pencil of Confocals}
+\section{Poncelet Family}
+\section{Poncelet Guitar Picks}
+\section{Poncelet Loci}
+\section{Poncelet Plectra}
+\section{Poncelet Propellers}
+\section{Poristic}
+\section{Quasi-Porisms}
+\section{Rotating Equilaterals}
+\section{Self-Intersected}
+\section{Stationary Circles}
+\section{Steiner's Hat}
+\section{Subtris}
+\section{Swans}
+\section{Tangential Polygon}
+\section{Tris Enveloping Ellipses}
+\section{Unrolled 3-Periodics}

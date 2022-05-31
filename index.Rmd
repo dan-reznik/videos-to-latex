@@ -1,0 +1,25 @@
+---
+title: "Convert .CSV Google Sheets to Latex"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(jsonlite)
+```
+
+
+```{r}
+df_videos <- read_csv("data/Elliptic Billiards Media - videos.csv")
+```
+
+```{r}
+str_videos <- df_videos %>%
+  group_by(Section) %>%
+  summarize(line=glue::glue("\\section{{{Section[1]}}}\n"))
+str_videos
+```
+```{r}
+str_videos$line %>% write_lines("data/out.txt")
+```
+
