@@ -1,0 +1,27 @@
+\documentclass[12pt]{article}
+
+\title{Videos of Experiments (2019--2021)}
+
+\author{Dan S. Reznik}
+
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage[breaklinks=true]{hyperref}
+%\usepackage[dvipsnames]{xcolor}
+\hypersetup{
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when
+    pdfstartview={FitH},    % fits the width of 
+    colorlinks=true,       % false: boxed links
+    linkcolor=red, 
+    citecolor=blue,   
+    filecolor=black, 
+    urlcolor=red
+}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
