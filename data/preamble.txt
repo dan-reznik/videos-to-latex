@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\title{Videos of Experiments (2019--2021)}
+\title{Videos of Experiments (2019--2022)}
 
 \author{Dan S. Reznik}
 
