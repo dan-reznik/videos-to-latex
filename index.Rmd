@@ -10,6 +10,8 @@ library(glue)
 source("utils.R")
 ```
 
+Subs to do
+
 
 ```{r}
 df_videos <- read_csv("data/Elliptic Billiards Media - videos.csv")

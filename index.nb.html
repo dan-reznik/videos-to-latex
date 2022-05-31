@@ -1778,14 +1778,15 @@ source(&quot;utils.R&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>Subs to do</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfdmlkZW9zIDwtIHJlYWRfY3N2KFwiZGF0YS9FbGxpcHRpYyBCaWxsaWFyZHMgTWVkaWEgLSB2aWRlb3MuY3N2XCIpXG5gYGAifQ== -->
 <pre class="r"><code>df_videos &lt;- read_csv(&quot;data/Elliptic Billiards Media - videos.csv&quot;)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMzgyIENvbHVtbnM6IDEwXG7ilIDilIAgQ29sdW1uIHNwZWNpZmljYXRpb24g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAXG5EZWxpbWl0ZXI6IFwiLFwiXG5jaHIgKDcpOiBTZWN0aW9uLCBUaXRsZSwgTiwgS2ltYmVybGluZyBDZW50ZXJzLCBWaWRlbzEsIFZpZGVvMiwgVmlkZW8zXG5kYmwgKDIpOiBpZCwgWWVhclxubGdsICgxKTogc291bmRcblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 382 Columns: 10
-── Column specification ────────────────────────────────────────────────────────────────────
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMzkwIENvbHVtbnM6IDEwXG7ilIDilIAgQ29sdW1uIHNwZWNpZmljYXRpb24g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAXG5EZWxpbWl0ZXI6IFwiLFwiXG5jaHIgKDcpOiBTZWN0aW9uLCBUaXRsZSwgTiwgS2ltYmVybGluZyBDZW50ZXJzLCBWaWRlbzEsIFZpZGVvMiwgVmlkZW8zXG5kYmwgKDIpOiBpZCwgWWVhclxubGdsICgxKTogc291bmRcblxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
+<pre><code>Rows: 390 Columns: 10
+── Column specification ───────────────────────────────────────────────────────────────────────────────
 Delimiter: &quot;,&quot;
 chr (7): Section, Title, N, Kimberling Centers, Video1, Video2, Video3
 dbl (2): id, Year
@@ -1799,21 +1800,41 @@ lgl (1): sound
 <p>Make an itemize for each group.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlzdF92aWRlb3MgPC0gZGZfdmlkZW9zICU+JVxuICBncm91cF9ieShTZWN0aW9uKSAlPiVcbiAgZ3JvdXBfbWFwKG1ha2VfYmlidGV4KVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlzdF92aWRlb3MgPC0gZGZfdmlkZW9zICU+JVxuICBncm91cF9ieShTZWN0aW9uKSAlPiVcbiAgZ3JvdXBfbWFwKG1ha2VfYmlidGV4KVxubGlzdF92aWRlb3MgJT4lIGhlYWQoMylcbmBgYCJ9 -->
 <pre class="r"><code>list_videos &lt;- df_videos %&gt;%
   group_by(Section) %&gt;%
-  group_map(make_bibtex)</code></pre>
+  group_map(make_bibtex)
+list_videos %&gt;% head(3)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gYG11dGF0ZSgpYDpcbiEgUHJvYmxlbSB3aGlsZSBjb21wdXRpbmcgYHN0ciA9IGdsdWUoXCJcXFxcaXRlbSBcXFxcdGV4dGl0e3t7Y2xlYW5fdGl0bGUoVGl0bGUpfX19LFxuICB7WWVhcn0uIHlvdXR1LmJlL1xcXFxocmVme3t7VmlkZW8xfX19e3tcXFxcbm9saW5rdXJse3t7Y2xlYW5fdmlkZW8oVmlkZW8xKX19fX19XCIpYC5cbkNhdXNlZCBieSBlcnJvciBpbiBgc3RyaV9yZXBsYWNlX2FsbF9yZWdleCgpYDpcbiEgSW5jb3JyZWN0bHkgbmVzdGVkIHBhcmVudGhlc2VzIGluIHJlZ2V4IHBhdHRlcm4uIChVX1JFR0VYX01JU01BVENIRURfUEFSRU4sIGNvbnRleHQ9YFhcXCgoZCs/KSlcXClgKVxuQmFja3RyYWNlOlxuICAxLiBkZl92aWRlb3MgJT4lIGdyb3VwX2J5KFNlY3Rpb24pICU+JSBncm91cF9tYXAobWFrZV9iaWJ0ZXgpXG4gMzIuIHN0cmluZ3I6OnN0cl9yZXBsYWNlX2FsbCguLCBcIlhcXFxcKChkKz8pKVxcXFwpXCIsIFwiJFhfKFxcMDAxKSRcIilcbiAzMy4gc3RyaW5naTo6c3RyaV9yZXBsYWNlX2FsbF9yZWdleCguLi4pXG4ifQ== -->
-<pre><code>Error in `mutate()`:
-! Problem while computing `str = glue(&quot;\\item \\textit{{{clean_title(Title)}}},
-  {Year}. youtu.be/\\href{{{Video1}}}{{\\nolinkurl{{{clean_video(Video1)}}}}}&quot;)`.
-Caused by error in `stri_replace_all_regex()`:
-! Incorrectly nested parentheses in regex pattern. (U_REGEX_MISMATCHED_PAREN, context=`X\((d+?))\)`)
-Backtrace:
-  1. df_videos %&gt;% group_by(Section) %&gt;% group_map(make_bibtex)
- 32. stringr::str_replace_all(., &quot;X\\((d+?))\\)&quot;, &quot;$X_(\001)$&quot;)
- 33. stringi::stri_replace_all_regex(...)</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiW1sxXV1cblxcc2VjdGlvbntBZmZpbmUgSW1hZ2VzICg0KX1cblxuXFxiZWdpbntlbnVtZXJhdGV9W3Jlc3VtZV1cblxcaXRlbSBcXHRleHRpdHtBZmZpbmUgaW1hZ2VzIG9mIGJpbGxpYXJkIE4tcGVyaW9kaWNzIElhOiBOPTMgcXVhcnRldH0sIDIwMjEuIFxcaHJlZntodHRwczovL3lvdXR1LmJlL0VKenFzRUxrUE40fXtcXHVybHt5b3V0dS5iZS9FSnpxc0VMa1BONH19XG5cXGl0ZW0gXFx0ZXh0aXR7QWZmaW5lIGltYWdlcyBvZiBiaWxsaWFyZCBOLXBlcmlvZGljcyBJYjogTj0zIHRyaW99LCAyMDIxLiBcXGhyZWZ7aHR0cHM6Ly95b3V0dS5iZS9IakJaZHJSM0F6c317XFx1cmx7eW91dHUuYmUvSGpCWmRyUjNBenN9fVxuXFxpdGVtIFxcdGV4dGl0e0FmZmluZSBpbWFnZXMgb2YgYmlsbGlhcmQgTi1wZXJpb2RpY3MgSUlhOiBOPTUgcXVhcnRldCBcXCYgdHJpb30sIDIwMjEuIFxcaHJlZntodHRwczovL3lvdXR1LmJlL1ZRNGZCX3MzM0hFfXtcXHVybHt5b3V0dS5iZS9WUTRmQlxcX3MzM0hFfX1cblxcaXRlbSBcXHRleHRpdHtBZmZpbmUgaW1hZ2VzIG9mIGJpbGxpYXJkIE4tcGVyaW9kaWNzIElJYjogTj01IHJvbGUgcmV2ZXJzYWx9LCAyMDIxLiBcXGhyZWZ7aHR0cHM6Ly95b3V0dS5iZS83S3RUdFhYSmxFSX17XFx1cmx7eW91dHUuYmUvN0t0VHRYWEpsRUl9fVxuXFxlbmR7ZW51bWVyYXRlfVxuXG5cbltbMl1dXG5cXHNlY3Rpb257QW50aWNldmlhbiAoMil9XG5cblxcYmVnaW57ZW51bWVyYXRlfVtyZXN1bWVdXG5cXGl0ZW0gXFx0ZXh0aXR7VGhlIEFudGljZXZpYW4gUG9seWdvbiBJOiBCYXNpYyBQaGVub21lbmF9LCAyMDIxLiBcXGhyZWZ7aHR0cHM6Ly95b3V0dS5iZS9GS3ZEZmFtVHktWX17XFx1cmx7eW91dHUuYmUvRkt2RGZhbVR5LVl9fVxuXFxpdGVtIFxcdGV4dGl0e1RoZSBBbnRpY2V2aWFuIFBvbHlnb24gSUk6IEN5Y2xpY2FsIFByb2plY3Rpdml0aWVzfSwgMjAyMS4gXFxocmVme2h0dHBzOi8veW91dHUuYmUvQkxIQmxPV3J0anN9e1xcdXJse3lvdXR1LmJlL0JMSEJsT1dydGpzfX1cblxcZW5ke2VudW1lcmF0ZX1cblxuXG5bWzNdXVxuXFxzZWN0aW9ue0FyZWEgSW52YXJpYW50cyAoMyl9XG5cblxcYmVnaW57ZW51bWVyYXRlfVtyZXN1bWVdXG5cXGl0ZW0gXFx0ZXh0aXR7QW1hemluZyBFbGxpcHNlIFBlZGFsIGFuZCBDb250cmFwZWRhbCBDdXJ2ZXM6IGFyZWEgaW52YXJpYW5jZSBmb3IgYWxsIHBlZGFsIHBvaW50cyBvbiBhIGNpcmNsZSF9LCAyMDIwLiBcXGhyZWZ7aHR0cHM6Ly95b3V0dS5iZS9VVW52ajdWSVlzb317XFx1cmx7eW91dHUuYmUvVVVudmo3VklZc299fVxuXFxpdGVtIFxcdGV4dGl0e1JlZ3VsYXIgUG9seWdvbnM6IHRoZSBTaWduZWQgQXJlYSBvZiB0aGUgQW50aXBlZGFsIFBvbHlnb24gVmFuaXNoZXMgYWxvbmcgYSBDaXJjbGU/fSwgMjAyMC4gXFxocmVme2h0dHBzOi8veW91dHUuYmUvOVBaNl9iSHoyVUV9e1xcdXJse3lvdXR1LmJlLzlQWjZcXF9iSHoyVUV9fVxuXFxpdGVtIFxcdGV4dGl0e1N0ZWluZXIncyBLcsO8bW11bmdzLVNjaHdlcnB1bmt0IGltcGxpZXMgQXJlYS1JbnZhcmlhbnQgSW50ZXJwb2xhdGVkIFBlZGFsIEN1cnZlIG92ZXIgQ2lyY2xlc30sIDIwMjAuIFxcaHJlZntodHRwczovL3lvdXR1LmJlL2dSOEF4ZTgyM19NfXtcXHVybHt5b3V0dS5iZS9nUjhBeGU4MjNcXF9NfX1cblxcZW5ke2VudW1lcmF0ZX1cbiJ9 -->
+<pre><code>[[1]]
+\section{Affine Images (4)}
+
+\begin{enumerate}[resume]
+\item \textit{Affine images of billiard N-periodics Ia: N=3 quartet}, 2021. \href{https://youtu.be/EJzqsELkPN4}{\url{youtu.be/EJzqsELkPN4}}
+\item \textit{Affine images of billiard N-periodics Ib: N=3 trio}, 2021. \href{https://youtu.be/HjBZdrR3Azs}{\url{youtu.be/HjBZdrR3Azs}}
+\item \textit{Affine images of billiard N-periodics IIa: N=5 quartet \&amp; trio}, 2021. \href{https://youtu.be/VQ4fB_s33HE}{\url{youtu.be/VQ4fB\_s33HE}}
+\item \textit{Affine images of billiard N-periodics IIb: N=5 role reversal}, 2021. \href{https://youtu.be/7KtTtXXJlEI}{\url{youtu.be/7KtTtXXJlEI}}
+\end{enumerate}
+
+
+[[2]]
+\section{Anticevian (2)}
+
+\begin{enumerate}[resume]
+\item \textit{The Anticevian Polygon I: Basic Phenomena}, 2021. \href{https://youtu.be/FKvDfamTy-Y}{\url{youtu.be/FKvDfamTy-Y}}
+\item \textit{The Anticevian Polygon II: Cyclical Projectivities}, 2021. \href{https://youtu.be/BLHBlOWrtjs}{\url{youtu.be/BLHBlOWrtjs}}
+\end{enumerate}
+
+
+[[3]]
+\section{Area Invariants (3)}
+
+\begin{enumerate}[resume]
+\item \textit{Amazing Ellipse Pedal and Contrapedal Curves: area invariance for all pedal points on a circle!}, 2020. \href{https://youtu.be/UUnvj7VIYso}{\url{youtu.be/UUnvj7VIYso}}
+\item \textit{Regular Polygons: the Signed Area of the Antipedal Polygon Vanishes along a Circle?}, 2020. \href{https://youtu.be/9PZ6_bHz2UE}{\url{youtu.be/9PZ6\_bHz2UE}}
+\item \textit{Steiner&#39;s Krümmungs-Schwerpunkt implies Area-Invariant Interpolated Pedal Curve over Circles}, 2020. \href{https://youtu.be/gR8Axe823_M}{\url{youtu.be/gR8Axe823\_M}}
+\end{enumerate}</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1840,7 +1861,7 @@ Backtrace:
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkNvbnZlcnQgLkNTViBHb29nbGUgU2hlZXRzIHRvIExhdGV4Ig0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KYGBge3J9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoanNvbmxpdGUpDQpsaWJyYXJ5KGdsdWUpDQpzb3VyY2UoInV0aWxzLlIiKQ0KYGBgDQoNCg0KYGBge3J9DQpkZl92aWRlb3MgPC0gcmVhZF9jc3YoImRhdGEvRWxsaXB0aWMgQmlsbGlhcmRzIE1lZGlhIC0gdmlkZW9zLmNzdiIpDQpgYGANCg0KTWFrZSBhbiBpdGVtaXplIGZvciBlYWNoIGdyb3VwLg0KDQpgYGB7cn0NCmxpc3RfdmlkZW9zIDwtIGRmX3ZpZGVvcyAlPiUNCiAgZ3JvdXBfYnkoU2VjdGlvbikgJT4lDQogIGdyb3VwX21hcChtYWtlX2JpYnRleCkNCmxpc3RfdmlkZW9zICU+JSBoZWFkKDMpDQpgYGANCg0KQ29tYmluZSBhbGwgc3RyaW5ncy4NCg0KYGBge3J9DQpzdHJfdmlkZW9zIDwtIGxpc3RfdmlkZW9zICU+JQ0KICBtYXBfY2hyKH4ueCkgJT4lDQogIHN0cl9jKGNvbGxhcHNlPSJcbiIpDQpgYGANCg0KTmVlZHMgdG8gdXNlIHRoZSAiZW51bWl0ZW0iIHBhY2thZ2U6DQoNCmBgYHtyfQ0KZ2x1ZSgie3JlYWRfZmlsZSgnZGF0YS9wcmVhbWJsZS50eHQnKX0iLA0KICAgICAie3N0cl92aWRlb3N9IiwNCiAgICAgIlxcZW5ke3tkb2N1bWVudH19XG4iKSAlPiUNCiAgd3JpdGVfZmlsZSgiZGF0YS9tYWluLnRleCIpDQpgYGANCg0KDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkNvbnZlcnQgLkNTViBHb29nbGUgU2hlZXRzIHRvIExhdGV4Ig0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KYGBge3J9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoanNvbmxpdGUpDQpsaWJyYXJ5KGdsdWUpDQpzb3VyY2UoInV0aWxzLlIiKQ0KYGBgDQoNClN1YnMgdG8gZG8NCg0KDQpgYGB7cn0NCmRmX3ZpZGVvcyA8LSByZWFkX2NzdigiZGF0YS9FbGxpcHRpYyBCaWxsaWFyZHMgTWVkaWEgLSB2aWRlb3MuY3N2IikNCmBgYA0KDQpNYWtlIGFuIGl0ZW1pemUgZm9yIGVhY2ggZ3JvdXAuDQoNCmBgYHtyfQ0KbGlzdF92aWRlb3MgPC0gZGZfdmlkZW9zICU+JQ0KICBncm91cF9ieShTZWN0aW9uKSAlPiUNCiAgZ3JvdXBfbWFwKG1ha2VfYmlidGV4KQ0KbGlzdF92aWRlb3MgJT4lIGhlYWQoMykNCmBgYA0KDQpDb21iaW5lIGFsbCBzdHJpbmdzLg0KDQpgYGB7cn0NCnN0cl92aWRlb3MgPC0gbGlzdF92aWRlb3MgJT4lDQogIG1hcF9jaHIofi54KSAlPiUNCiAgc3RyX2MoY29sbGFwc2U9IlxuIikNCmBgYA0KDQpOZWVkcyB0byB1c2UgdGhlICJlbnVtaXRlbSIgcGFja2FnZToNCg0KYGBge3J9DQpnbHVlKCJ7cmVhZF9maWxlKCdkYXRhL3ByZWFtYmxlLnR4dCcpfSIsDQogICAgICJ7c3RyX3ZpZGVvc30iLA0KICAgICAiXFxlbmR7e2RvY3VtZW50fX1cbiIpICU+JQ0KICB3cml0ZV9maWxlKCJkYXRhL21haW4udGV4IikNCmBgYA0KDQoNCg==</div>
 
 
 

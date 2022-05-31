@@ -19,6 +19,7 @@
     filecolor=black, 
     urlcolor=red
 }
+\usepackage{xurl}
 
 \begin{document}
 
