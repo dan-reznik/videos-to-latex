@@ -15,22 +15,54 @@ clean_title <- function(str) {
     str_replace_all(fixed("w/"),"with") %>%
     str_replace_all(fixed("X(ρ)"),"$X_\\rho$") %>%
     str_replace_all(fixed("ρ"),"$\\rho$") %>%
+    str_replace_all(fixed("Δ"),"$\\Delta$") %>%
+    str_replace_all(fixed("δ"),"$\\delta$") %>%
     str_replace_all(fixed("X(i)"),"$X_i$") %>%
     str_replace_all(fixed("pi/2"),"$\\pi/2$") %>%
     str_replace_all(fixed("&"),"\\&") %>%
     str_replace_all("X\\((\\d+?)\\)","$X_{\\1}$") %>%
     str_replace_all("X'\\((\\d+?)\\)","$X'_{\\1}$") %>%
-    str_replace_all("X(\\d+)","$X_{\\1}$")
+    str_replace_all("X(\\d+)","$X_{\\1}$") %>%
+    str_replace_all('"(.+?)"',"``\\1''")
   # str_replace_all("N=(\\d+?)","$N=\\1$")
 }
 
-make_bibtex_entry <- function(df) {
-  df_str <- df %>% mutate(str=glue("\\item \\textit{{{clean_title(Title)}}}, {Year}. \\href{{{Video1}}}{{\\url{{{clean_video(Video1)}}}}}"))
+
+make_enum_entry_long <- function(df) {
+  df_str <- df %>%
+    # mutate(str=glue("\\item \\textit{{{clean_title(Title)}}}, {Year}. \\href{{{Video1}}}{{\\url{{{clean_video(Video1)}}}}}"))
+    mutate(str=glue("\\item \\textbf{{{clean_title(Title)}}}, {Year}. ",
+                    "\\href{{{Video1}}}{{\\url{{{clean_video(Video1)}}}}} ",
+                    "{descr}\n"))
   df_coll <- df_str$str %>% str_c(collapse="\n")
   glue("\\begin{{enumerate}}[resume]\n{df_coll}\n\\end{{enumerate}}\n")
 }
 
-make_bibtex <- function(df,key) {
-  glue("\\section{{{clean_title(key)} ({nrow(df)})}\n\n{make_bibtex_entry(df)}\n\n")
+make_enum_entry <- function(df) {
+  df_str <- df %>%
+    # mutate(str=glue("\\item \\textit{{{clean_title(Title)}}}, {Year}. \\href{{{Video1}}}{{\\url{{{clean_video(Video1)}}}}}"))
+    mutate(str=glue("\\item \\textbf{{{clean_title(Title)}}}, {Year}. ",
+                    "\\href{{{Video1}}}{{\\url{{{clean_video(Video1)}}}}}"))
+  df_coll <- df_str$str %>% str_c(collapse="\n")
+  glue("\\begin{{enumerate}}[resume]\n{df_coll}\n\\end{{enumerate}}\n")
+}
+
+make_subsec_entry_long <- function(df) {
+  df_str <- df %>%
+    # mutate(str=glue("\\item \\textit{{{clean_title(Title)}}}, {Year}. \\href{{{Video1}}}{{\\url{{{clean_video(Video1)}}}}}"))
+    mutate(str=glue("\\subsection{{{clean_title(Title)}}}\n",
+                    "Year: {Year}. N: {N}. ",
+                    "\\href{{{Video1}}}{{\\url{{{clean_video(Video1)}}}}}\n\n",
+                    "{clean_title(descr)}\n"))
+  df_coll <- df_str$str %>% str_c(collapse="\n")
+  df_coll
+}
+
+make_enum <- function(df,key) {
+  glue("\\section{{{clean_title(key)} ({nrow(df)})}\n\n{make_enum_entry(df)}\n\n")
+}
+
+make_subsec <- function(df,key) {
+  glue("\\section{{{clean_title(key)} ({nrow(df)})}\n\n{make_subsec_entry_long(df)}\n\n")
 }
 

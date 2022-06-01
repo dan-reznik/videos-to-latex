@@ -11,7 +11,7 @@
 
 
 
-<title>Convert .CSV Google Sheets to Latex</title>
+<title>R Notebook</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1762,7 +1762,7 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Convert .CSV Google Sheets to Latex</h1>
+<h1 class="title toc-ignore">R Notebook</h1>
 
 </div>
 
@@ -1770,80 +1770,35 @@ pre code {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KGpzb25saXRlKVxubGlicmFyeShnbHVlKVxubGlicmFyeShydmVzdClcbmxpYnJhcnkoaHR0cilcbnNvdXJjZShcInV0aWxzLlJcIilcbnNvdXJjZShcInV0aWxzX3lvdXR1YmUuUlwiKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KGh0dHIpXG5zb3VyY2UoXCJ1dGlsc195b3V0dWJlLlJcIilcbmBgYCJ9 -->
 <pre class="r"><code>library(tidyverse)
-library(jsonlite)
-library(glue)
-library(rvest)
 library(httr)
-source(&quot;utils.R&quot;)
 source(&quot;utils_youtube.R&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Subs to do</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2RmX3ZpZGVvcyA8LSByZWFkX2NzdihcImRhdGEvRWxsaXB0aWMgQmlsbGlhcmRzIE1lZGlhIC0gdmlkZW9zLmNzdlwiKVxuYGBgIn0= -->
-<pre class="r"><code>#df_videos &lt;- read_csv(&quot;data/Elliptic Billiards Media - videos.csv&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmlkZW8gPC0gXCJFSnpxc0VMa1BONFwiXG5nZXRfdmlkZW9fZGVzY3IodmlkZW8pXG5gYGAifQ== -->
+<pre class="r"><code>video &lt;- &quot;EJzqsELkPN4&quot;
+get_video_descr(video)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Add video description using YouTube API (slow, 390 videos)</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2RmX3ZpZGVvc19kZXNjciA8LSBkZl92aWRlb3MgJT4lXG4gICNzbGljZSgzMDA6MzkwKSAlPiVcbiMgIG11dGF0ZSh2aWRlb19pZD1zdHJfcmVtb3ZlX2FsbChWaWRlbzEsXCJodHRwW3M/XTovL3lvdXR1LmJlL1wiKSkgJT4lXG4jICBtdXRhdGUoZGVzY3I9dmlkZW9faWQgJT4lIG1hcF9jaHIoZ2V0X3ZpZGVvX2Rlc2NyKSlcbiNkZl92aWRlb3NfZGVzY3IgJT4lIHdyaXRlX3JkcyhcImRhdGEvdmlkZW9zX2Rlc2NyLnJkc1wiLFwiYnoyXCIpXG5gYGAifQ== -->
-<pre class="r"><code>#df_videos_descr &lt;- df_videos %&gt;%
-  #slice(300:390) %&gt;%
-#  mutate(video_id=str_remove_all(Video1,&quot;http[s?]://youtu.be/&quot;)) %&gt;%
-#  mutate(descr=video_id %&gt;% map_chr(get_video_descr))
-#df_videos_descr %&gt;% write_rds(&quot;data/videos_descr.rds&quot;,&quot;bz2&quot;)</code></pre>
-<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiRnJvbSBMZWZ0IHRvIFJpZ2h0OlxcblxcbkZpcnN0OiBBIGZhbWlseSBvZiBQb25jZWxldCAzLXBlcmlvZGljcyAoYmx1ZSkgaW4gdGhlIGVsbGlwdGljIGJpbGxpYXJkLCBpLmUuLCBpbnRlcnNjcmliZWQgaW4gYSBwYWlyIG9mIGNvbmZvY2FsIGVsbGlwc2VzIChibGFjayBhbmQgYnJvd24pLiBDbGFzc2ljYWwgY29uc2VydmF0aW9ucyBpbmNsdWRlIHBlcmltZXRlciBhbmQgSm9hY2hpbXN0aGFsJ3MgY29uc3RhbnQgWzFdLiAgVGhpcyBmYW1pbHkgYWxzbyBjb25zZXJ2ZXMgdGhlIHN1bSBvZiBpbnRlcm5hbCBhbmdsZSBjb3NpbmVzLiBBbHNvIHNob3duIGFyZSB0aGUgZXhjZW50cmFsIHBvbHlnb25zIChzb2xpZCBncmVlbik7IHRoZXNlIGNvbnNlcnZlIHRoZSBwcm9kdWN0IG9mIGludGVybmFsIGFuZ2xlIGNvc2luZXMgWzIsMyw0XS4gVGhlIHJhdGlvIG9mIGFyZWFzIG9mIHRoZSBleGNlbnRyYWwgdG8gdGhhdCBvZiAzLXBlcmlvZGljcyBpcyBhbHNvIGNvbnNlcnZlZCBbNV0uIFRoZSBsb2N1cyBvZiB0aGUgZXhjZW50ZXJzIGlzIGFuIGVsbGlwc2UgKGRhc2hlZCBncmVlbikuIFxcblxcblNlY29uZDogdGhlIGFmZmluZSBpbWFnZSBvZiBjb25mb2NhbCBmYW1pbHkgd2hpY2ggc2VuZHMgdGhlIGNhdXN0aWMgdG8gYSBjaXJjbGUuIFRoaXMgZmFtaWx5IGFsc28gY29uc2VydmVzIHRoZSBzdW0gb2YgaXRzIGNvc2luZXMgWzNdLiBTdXJwcmlzaW5nbHkgaXQgaXMgZXF1YWwgdG8gdGhhdCBvZiBpdHMgY29uZm9jYWwgcHJlLWltYWdlIChsZWZ0KS4gTm90aWNlIHRoZSBpbWFnZSBvZiB0aGUgb3JpZ2luYWwgZXhjZW50cmFscyAoZ3JlZW4pIGRvZXMgbm90IGNvbnNlcnZlIGl0cyBwcm9kdWN0IG9mIGNvc2luZXMgKGdyYXllZCBvdXQpLiBOb3RlIHRoZXNlIGFyZSBub3QgdGhlIGV4Y2VudHJhbHMgb2YgdGhlIGN1cnJlbnQgZmFtaWx5LlxcblxcblRoaXJkOiB0aGUgYWZmaW5lIGltYWdlIG9mIHRoZSBjb25mb2NhbCBmYW1pbHkgd2hpY2ggc2VuZHMgdGhlIG91dGVyIGVsbGlwc2UgdG8gYSBjaXJjbGUgKGJsYWNrKS4gTGlrZSBjb25mb2NhbCBleGNlbnRyYWxzLCB0aGlzIGFsc28gY29uc2VydmVzIHRoZSBwcm9kdWN0IG9mIGNvc2luZXMgWzNdLiBTdXJwcmlzaW5nbHkgaXQgaXMgZXF1YWwgdG8gdGhhdCBvZiB0aGUgZXhjZW50cmFscy4gQWxzbyBzaG93biBpcyB0aGUgaW1hZ2Ugb2YgdGhlIGNvbmZvY2FsIGV4Y2VudHJhbHMgdW5kZXIgdGhlIHNhbWUgYWZmaW5lIHRyYW5zZm9ybWF0aW9uLiBUaGlzIGZhbWlseSBoYXMgYW4gaW5jaXJjbGUgYW5kIGxpa2UgdGhlIHByZXZpb3VzIG9uZSBjb25zZXJ2ZXMgaXRzIHN1bSBvZiBjb3NpbmVzLiBTdXJwcmlzaW5nbHksIGl0IGlzIGVxdWFsIHRvIHRoZSBzdW0gY29uc2VydmVkIGJ5IHRoZSBvcmlnaW5hbCBjb25mb2NhbCBmYW1pbHkgKGZpcnN0KSBhbmQgdGhlIG9uZSB3aXRoIGluY2lyY2xlIChzZWNvbmQpLlxcblxcbkZvdXJ0aDogdGhlIGFmZmluZSBpbWFnZSBvZiB0aGUgY29uZm9jYWwgMy1wZXJpb2RpY3MgKGZpcnN0KSB3aGljaCBzZW5kcyB0aGUgbG9jdXMgb2YgdGhlIGV4Y2VudGVycyB0byBhIGNpcmNsZSAoZGFzaGVkIGdyZWVuKS4gTGlrZSBpdHMgY29uZm9jYWwgcHJlLWltYWdlLCB0aGlzIGFsc28gY29uc2VydmVzIHRoZSBwcm9kdWN0IG9mIGl0cyBjb3NpbmVzIFszXS4gU3VycHJpc2luZ2x5IGl0IGlzIGVxdWFsIHRvIHRoYXQgb2YgaXRzIGNvbmZvY2FsIHByZS1pbWFnZSAoZmlyc3QpIGFuZCB0aGF0IG9mIHRoZSBmYW1pbHkgd2l0aCBpbmNpcmNsZSAodGhpcmQpLiBUaGVzZSB0cmlhbmdsZXMgYXJlICpub3QqIHRoZSBleGNlbnRyYWxzIG9mIHRoZSBjdXJyZW50IGZhbWlseSAoYmx1ZSkgd2hpY2ggZG8gbm90IGNvbnNlcnZlIHRoZWlyIHN1bSBvZiBjb3NpbmVzIChncmF5ZWQgb3V0KS5cXG5cXG5FeHBlcmltZW50YWxseSwgd2UgaGF2ZSBhbHNvIG5vdGljZWQgdGhhdCB0aGUgY29uZm9jYWwraW5jaXJjbGUgZmFtaWxpZXMgc3dlZXAgdGhlIHNhbWUgY3VydmUgaW4gMy1kaW1lbnNpb25hbCBcXFwiY29zaW5lIHNwYWNlXFxcIiwgYXMgZG8gdGhlIG91dGVyK2NpcmN1bWNpcmNsZSBmYW1pbGllcywgc2VlIFs4XS5cXG5cXG5bMV0gUy4gVGFiYWNobmlrb3YsIFxcXCJHZW9tZXRyeSBhbmQgQmlsbGlhcmRzXFxcIiwgU3R1ZGVudCBNYXRoZW1hdGljYWwgTGlicmFyeSwgdm9sIDMwLCBBbWVyaWNhbiBNYXRoZW1hdGljYWwgU29jaWV0eSwgMjAwNS4gaHR0cDovL3d3dy5wZXJzb25hbC5wc3UuZWR1L3NvdDIvYm9vay4uLuKAi1xcblsyXSBELiBSZXpuaWssIFIuIEdhcmNpYSwgYW5kIEouIEtvaWxsZXIsIFxcXCJDYW4gdGhlIEVsbGlwdGljIEJpbGxpYXJkIHN0aWxsIHN1cnByaXNlIHVzP1xcXCIsIE1hdGggSW50ZWxsaWdlbmNlciwgNDIsIDIwMjAuIGh0dHA6Ly9yZGN1LmJlL2IyY2cx4oCLXFxuWzNdIEEuIEFrb3B5YW4sIFIuIFNjaHdhcnR6LCBhbmQgUy4sIFxcXCJCaWxsaWFyZHMgaW4gRWxsaXBzZXMgUmV2aXNpdGVkXFxcIiwgRXVyLiBKLiBNYXRoLCAyMDIwLiBcXG5bNF0gTS4gQmlhbHkgYW5kIFMuIFRhYmFjaG5pa292LCBcXFwiRGFuIFJlem5paydzIElkZW50aXRpZXMgYW5kIE1vcmVcXFwiLFxcbkV1ci4gSi4gTWF0aC4sIDIwMjAuXFxuWzVdIEEuQy4gQ2hhdmV6LUNhbGl6LCBcXFwiTW9yZSBBYm91dCBBcmVhcyBhbmQgQ2VudGVycyBvZiBQb25jZWxldCBQb2x5Z29uc1xcXCIgLCBBcm5vbGQgTWF0aCBKLiwgMjAyMC5cXG5bNl0gUi4gU2Nod2FydHosICBcXFwiVGhlIFBvbmNlbGV0IGdyaWRcXFwiLCBBZHZhbmNlcyBpbiBHZW9tZXRyeSwgNzoyLCAyMDA3Llxcbls3XSBNLiBMZXZpIGFuZCAgUy4gVGFiYWNobmlrb3YsIFxcXCJUaGUgUG9uY2VsZXQgR3JpZCBhbmQgQmlsbGlhcmRzIGluIEVsbGlwc2VzXFxcIixBbS4gTWF0aC4gTW9udGhseSwgIDExNDoxMCwgMjAwNy5cXG5bOF0gRC4gSmF1ZCwgRC4gUmV6bmlrLCBhbmQgUi4gR2FyY2lhLCBcXFwiUG9uY2VsZXQgUGxlY3RyYTogSGFybW9uaW91cyBQcm9wZXJ0aWVzIG9mIENvc2luZSBTcGFjZVxcXCIsIGFyWGl2OjIxMDQuMTMxNzQgLCAyMDIwLlwiXG4ifQ== -->
+<pre><code>[1] &quot;From Left to Right:\n\nFirst: A family of Poncelet 3-periodics (blue) in the elliptic billiard, i.e., interscribed in a pair of confocal ellipses (black and brown). Classical conservations include perimeter and Joachimsthal&#39;s constant [1].  This family also conserves the sum of internal angle cosines. Also shown are the excentral polygons (solid green); these conserve the product of internal angle cosines [2,3,4]. The ratio of areas of the excentral to that of 3-periodics is also conserved [5]. The locus of the excenters is an ellipse (dashed green). \n\nSecond: the affine image of confocal family which sends the caustic to a circle. This family also conserves the sum of its cosines [3]. Surprisingly it is equal to that of its confocal pre-image (left). Notice the image of the original excentrals (green) does not conserve its product of cosines (grayed out). Note these are not the excentrals of the current family.\n\nThird: the affine image of the confocal family which sends the outer ellipse to a circle (black). Like confocal excentrals, this also conserves the product of cosines [3]. Surprisingly it is equal to that of the excentrals. Also shown is the image of the confocal excentrals under the same affine transformation. This family has an incircle and like the previous one conserves its sum of cosines. Surprisingly, it is equal to the sum conserved by the original confocal family (first) and the one with incircle (second).\n\nFourth: the affine image of the confocal 3-periodics (first) which sends the locus of the excenters to a circle (dashed green). Like its confocal pre-image, this also conserves the product of its cosines [3]. Surprisingly it is equal to that of its confocal pre-image (first) and that of the family with incircle (third). These triangles are *not* the excentrals of the current family (blue) which do not conserve their sum of cosines (grayed out).\n\nExperimentally, we have also noticed that the confocal+incircle families sweep the same curve in 3-dimensional \&quot;cosine space\&quot;, as do the outer+circumcircle families, see [8].\n\n[1] S. Tabachnikov, \&quot;Geometry and Billiards\&quot;, Student Mathematical Library, vol 30, American Mathematical Society, 2005. http://www.personal.psu.edu/sot2/book...​\n[2] D. Reznik, R. Garcia, and J. Koiller, \&quot;Can the Elliptic Billiard still surprise us?\&quot;, Math Intelligencer, 42, 2020. http://rdcu.be/b2cg1​\n[3] A. Akopyan, R. Schwartz, and S., \&quot;Billiards in Ellipses Revisited\&quot;, Eur. J. Math, 2020. \n[4] M. Bialy and S. Tabachnikov, \&quot;Dan Reznik&#39;s Identities and More\&quot;,\nEur. J. Math., 2020.\n[5] A.C. Chavez-Caliz, \&quot;More About Areas and Centers of Poncelet Polygons\&quot; , Arnold Math J., 2020.\n[6] R. Schwartz,  \&quot;The Poncelet grid\&quot;, Advances in Geometry, 7:2, 2007.\n[7] M. Levi and  S. Tabachnikov, \&quot;The Poncelet Grid and Billiards in Ellipses\&quot;,Am. Math. Monthly,  114:10, 2007.\n[8] D. Jaud, D. Reznik, and R. Garcia, \&quot;Poncelet Plectra: Harmonious Properties of Cosine Space\&quot;, arXiv:2104.13174 , 2020.&quot;</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfdmlkZW9zX2Rlc2NyIDwtIHJlYWRfcmRzKFwiZGF0YS92aWRlb3NfZGVzY3IucmRzXCIpXG5gYGAifQ== -->
-<pre class="r"><code>df_videos_descr &lt;- read_rds(&quot;data/videos_descr.rds&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Make an itemize for each group.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlzdF92aWRlb3MgPC0gZGZfdmlkZW9zX2Rlc2NyICU+JVxuICBncm91cF9ieShTZWN0aW9uKSAlPiVcbiAgZ3JvdXBfbWFwKG1ha2VfZW51bSkgXG4gICMgZ3JvdXBfbWFwKG1ha2Vfc3Vic2VjKSBcbiMgbGlzdF92aWRlb3MgJT4lIGhlYWQoMylcbmBgYCJ9 -->
-<pre class="r"><code>list_videos &lt;- df_videos_descr %&gt;%
-  group_by(Section) %&gt;%
-  group_map(make_enum) 
-  # group_map(make_subsec) 
-# list_videos %&gt;% head(3)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Combine all strings.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyX3ZpZGVvcyA8LSBsaXN0X3ZpZGVvcyAlPiVcbiAgbWFwX2Nocih+LngpICU+JVxuICBzdHJfYyhjb2xsYXBzZT1cIlxcblwiKVxuYGBgIn0= -->
-<pre class="r"><code>str_videos &lt;- list_videos %&gt;%
-  map_chr(~.x) %&gt;%
-  str_c(collapse=&quot;\n&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Needs to use the “enumitem” package:</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2x1ZShcIntyZWFkX2ZpbGUoJ2RhdGEvcHJlYW1ibGUudHh0Jyl9XCIsXG4gICAgIFwie3N0cl92aWRlb3N9XCIsXG4gICAgIFwiXFxcXGVuZHt7ZG9jdW1lbnR9fVxcblwiKSAlPiVcbiAgd3JpdGVfZmlsZShcImRhdGEvbWFpbi50ZXhcIilcbmBgYCJ9 -->
-<pre class="r"><code>glue(&quot;{read_file(&#39;data/preamble.txt&#39;)}&quot;,
-     &quot;{str_videos}&quot;,
-     &quot;\\end{{document}}\n&quot;) %&gt;%
-  write_file(&quot;data/main.tex&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2hhbm5lbC5qc29uIDwtIGZyb21KU09OKGpzb25fcmVzdWx0LCBmbGF0dGVuID0gVClcbmNoYW5uZWwuZGYgPC0gYXMuZGF0YS5mcmFtZShjaGFubmVsLmpzb24pXG5gYGAifQ== -->
+<pre class="r"><code>channel.json &lt;- fromJSON(json_result, flatten = T)
+channel.df &lt;- as.data.frame(channel.json)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkNvbnZlcnQgLkNTViBHb29nbGUgU2hlZXRzIHRvIExhdGV4Ig0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KYGBge3J9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoanNvbmxpdGUpDQpsaWJyYXJ5KGdsdWUpDQpsaWJyYXJ5KHJ2ZXN0KQ0KbGlicmFyeShodHRyKQ0Kc291cmNlKCJ1dGlscy5SIikNCnNvdXJjZSgidXRpbHNfeW91dHViZS5SIikNCmBgYA0KDQpTdWJzIHRvIGRvDQoNCg0KYGBge3J9DQojZGZfdmlkZW9zIDwtIHJlYWRfY3N2KCJkYXRhL0VsbGlwdGljIEJpbGxpYXJkcyBNZWRpYSAtIHZpZGVvcy5jc3YiKQ0KYGBgDQoNCkFkZCB2aWRlbyBkZXNjcmlwdGlvbiB1c2luZyBZb3VUdWJlIEFQSSAoc2xvdywgMzkwIHZpZGVvcykNCg0KYGBge3J9DQojZGZfdmlkZW9zX2Rlc2NyIDwtIGRmX3ZpZGVvcyAlPiUNCiAgI3NsaWNlKDMwMDozOTApICU+JQ0KIyAgbXV0YXRlKHZpZGVvX2lkPXN0cl9yZW1vdmVfYWxsKFZpZGVvMSwiaHR0cFtzP106Ly95b3V0dS5iZS8iKSkgJT4lDQojICBtdXRhdGUoZGVzY3I9dmlkZW9faWQgJT4lIG1hcF9jaHIoZ2V0X3ZpZGVvX2Rlc2NyKSkNCiNkZl92aWRlb3NfZGVzY3IgJT4lIHdyaXRlX3JkcygiZGF0YS92aWRlb3NfZGVzY3IucmRzIiwiYnoyIikNCmBgYA0KDQpgYGB7cn0NCmRmX3ZpZGVvc19kZXNjciA8LSByZWFkX3JkcygiZGF0YS92aWRlb3NfZGVzY3IucmRzIikNCmBgYA0KDQoNCk1ha2UgYW4gaXRlbWl6ZSBmb3IgZWFjaCBncm91cC4NCg0KYGBge3J9DQpsaXN0X3ZpZGVvcyA8LSBkZl92aWRlb3NfZGVzY3IgJT4lDQogIGdyb3VwX2J5KFNlY3Rpb24pICU+JQ0KICBncm91cF9tYXAobWFrZV9lbnVtKSANCiAgIyBncm91cF9tYXAobWFrZV9zdWJzZWMpIA0KIyBsaXN0X3ZpZGVvcyAlPiUgaGVhZCgzKQ0KYGBgDQoNCkNvbWJpbmUgYWxsIHN0cmluZ3MuDQoNCmBgYHtyfQ0Kc3RyX3ZpZGVvcyA8LSBsaXN0X3ZpZGVvcyAlPiUNCiAgbWFwX2Nocih+LngpICU+JQ0KICBzdHJfYyhjb2xsYXBzZT0iXG4iKQ0KYGBgDQoNCk5lZWRzIHRvIHVzZSB0aGUgImVudW1pdGVtIiBwYWNrYWdlOg0KDQpgYGB7cn0NCmdsdWUoIntyZWFkX2ZpbGUoJ2RhdGEvcHJlYW1ibGUudHh0Jyl9IiwNCiAgICAgIntzdHJfdmlkZW9zfSIsDQogICAgICJcXGVuZHt7ZG9jdW1lbnR9fVxuIikgJT4lDQogIHdyaXRlX2ZpbGUoImRhdGEvbWFpbi50ZXgiKQ0KYGBgDQoNCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShodHRyKQ0Kc291cmNlKCJ1dGlsc195b3V0dWJlLlIiKQ0KYGBgDQoNCg0KYGBge3J9DQp2aWRlbyA8LSAiRUp6cXNFTGtQTjQiDQpnZXRfdmlkZW9fZGVzY3IodmlkZW8pDQpgYGANCg0KYGBge3J9DQojY2hhbm5lbC5qc29uIDwtIGZyb21KU09OKGpzb25fcmVzdWx0LCBmbGF0dGVuID0gVCkNCg0KYGBgDQoNCg==</div>
 
 
 
@@ -1890,7 +1845,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("index.Rmd");
+  window.initializeSourceEmbed("scrape.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>

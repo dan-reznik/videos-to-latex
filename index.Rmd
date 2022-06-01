@@ -7,23 +7,42 @@ output: html_notebook
 library(tidyverse)
 library(jsonlite)
 library(glue)
+library(rvest)
+library(httr)
 source("utils.R")
+source("utils_youtube.R")
 ```
 
 Subs to do
 
 
 ```{r}
-df_videos <- read_csv("data/Elliptic Billiards Media - videos.csv")
+#df_videos <- read_csv("data/Elliptic Billiards Media - videos.csv")
 ```
+
+Add video description using YouTube API (slow, 390 videos)
+
+```{r}
+#df_videos_descr <- df_videos %>%
+  #slice(300:390) %>%
+#  mutate(video_id=str_remove_all(Video1,"http[s?]://youtu.be/")) %>%
+#  mutate(descr=video_id %>% map_chr(get_video_descr))
+#df_videos_descr %>% write_rds("data/videos_descr.rds","bz2")
+```
+
+```{r}
+df_videos_descr <- read_rds("data/videos_descr.rds")
+```
+
 
 Make an itemize for each group.
 
 ```{r}
-list_videos <- df_videos %>%
+list_videos <- df_videos_descr %>%
   group_by(Section) %>%
-  group_map(make_bibtex)
-list_videos %>% head(3)
+  group_map(make_enum) 
+  # group_map(make_subsec) 
+# list_videos %>% head(3)
 ```
 
 Combine all strings.

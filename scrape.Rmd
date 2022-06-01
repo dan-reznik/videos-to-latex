@@ -1,0 +1,22 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(httr)
+source("utils_youtube.R")
+```
+
+
+```{r}
+video <- "EJzqsELkPN4"
+get_video_descr(video)
+```
+
+```{r}
+#channel.json <- fromJSON(json_result, flatten = T)
+
+```
+
