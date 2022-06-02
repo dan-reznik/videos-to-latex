@@ -1,0 +1,12 @@
+Given a point P on the boundary of an ellipse E (red dot in the video) with semiaxes (a,b), the point Q also on the boundary of E which is furthest away from P may experience discontinuous "jumps" as P is slid smoothly across the top or bottom vertex of E.
+
+Through a javascript app [1] we illustrate why that happens. Recall that a necessary condition for Q to maximize distance from P is that the normal of E at Q is pointed toward P.
+
+It turns out that if P lies in the interior (resp. exterior) of the ellipse evolute (an "astroid" which is an algebraic curve of degree 6 [1]), there are 3 points Q1,Q2,Q3 (resp. a single point Q) on the boundary whose normal is directed toward P. Then there are two cases:
+
+a) a/b is greater than sqrt(2): as P is exactly on the top or bottom vertex of E,   |Q1-P|=|Q3-P| and both are larger than |Q2-P|=2b. so as P crosses from one side of the top (or bottom) vertex of E to the other, the maximal distance point jumps from Q1 to Q3 discontinuously.
+
+b) a/b is less or equal than sqrt(2): the evolutei is completely interior to E, so there can only be one possible maximal distance Q for all P. I.e., there will be no discontinuous jumps.
+
+[1] D; Reznik, "Ellipse Echos", 2021. github.com/dan-reznik/ellipse-echo-p5j
+[2] "Astroid", Wikipedia, 2021. https://en.wikipedia.org/wiki/Astroid

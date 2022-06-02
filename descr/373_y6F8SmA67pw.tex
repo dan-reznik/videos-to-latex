@@ -1,0 +1,17 @@
+Start with a triangle T=ABC (in the video, equilateral) and a point M. Let T' be the triangle with vertices at the circumcenters of MBC, MCA, MAB, i.e., T'=tr3(T,M), where tr3 is a transformation. Iterate this to get T''=tr3(T',M). The video shows:
+
+a) regions of the plane for which the sequence converges, diverges, or is table
+b) that modulo rigid transformations with uniform scaling, the sequence only contains 3 distinct triangles
+c) that modulo the same, tr3^3 is the identity, i.e., every three applications of the transformation produce the initial triangle. In fact, departing from any N-gon, regular or not, N applications of the circumcenter map produce a new polygon homothetic to the original (modulo scale and rotation, see the note below and [1]). 
+d) that each successive trio of triangles is an M-scaled, M-rotated version of the previous trio, in such a way that the vertices of similar every-third-triangle lie on logarithmic spirals.
+e) that there are two groups of 3 points such that if M is on them, the sequence will only contain 3 individual triangles (it repeats over itself)
+f) if M is the centroid of the original triangle, the series only contains the original and a reflected copy (star of david).
+
+For more details, see [1]. 
+
+Note: In [1] it is shown that given a point M and a polygon P,  the Nth pedal of P wrt M is homothetic to P (modulo scale and rotation). It can be shown the circumcenter map is 1/2 sized copy of the antipedal polygon, i.e., the inverse pedal, therefore the N-periodicity. 
+
+References:
+
+[1] D. Reznik and R. Garcia, "Dynamics of the Circumcenter Map", Wolfram Community, April 2021, https://community.wolfram.com/groups/-/m/t/2234577
+[2]  B. M. Stewart, "Cyclic Properties of Miquel Polygons",  American Math. Monthly, Vol. 47, No. 7 (Aug. - Sep., 1940), pp. 462-466

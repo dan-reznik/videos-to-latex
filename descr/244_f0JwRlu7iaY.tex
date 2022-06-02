@@ -1,0 +1,19 @@
+Given a polygon P with vertices Pi, and internal angles θi, i=1,2,...,N, its Steiner Curvature Centroid K is the weighted average of its vertices with weights equal to sin(2θi). In 1825 eminent swiss mathematician Jakob Steiner not only discovered K (which he calls "Krümmungs Schwerpunkt") but also showed that the pedal polygon Q of P wrt to K has extremal area over all possible pedals. It is minimal (resp. maximal) when the sum of sin(2θi) is positive (resp. negative) [1]. 
+
+In this video I am investigating said pedal polygons with computed over the family of N-periodics in the elliptic billiard (EB) which we shall call P. Let P' and P'' denote the tangent (aka outer) and inner polygons to the N-periodic. Let their areas be denoted A, A', A''. Let the curvature centroids be denoted K, K', K'', and the area of the pedal polygons with respect to the latter be Ak, Ak', Ak''.  The following observations have been experimentally made, for more details refer to [2]:
+
+a) When N is even: K,K',K'' are stationary at the EB center.
+b) When N is odd, the 3 centroids sweep each a numerically-perfect ellipse.
+
+For both cases the following are suprisingly invartiant:
+
+* A/Ak
+* A'/Ak'
+* A''/Ak''
+
+Since A'/A and A/A'' are invariant, this also implies Ak'/Ak, Ak/Ak'', and Ak'/Ak'' are invariant.
+
+References
+
+[1] J. Steiner, "Über den Krümmungs-Schwerpunkt ebener Curven", 1838. [about the curvature centroids of plane curves].
+[2] D. Reznik, R. Garcia, and J. Koiller, "Forty New Invariants of N-Periodics in the Elliptic Billiard", 2020. https://arxiv.org/abs/2004.12497

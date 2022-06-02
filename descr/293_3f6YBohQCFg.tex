@@ -1,0 +1,36 @@
+Consider the family of Poncelet N-periodics inscribed in an external circle (radius R) and circumscribed about an internal concentric ellipse w axes (a,b). Let O denote the common center.
+
+For N=3, R = (a+b), but for N greater than 3, R is obtained numerically. 
+
+For all N (even or odd) this family conserves two basic quantities:
+
+a) the product of cosines
+b) the sum of sidelengths squared
+
+1) N=3 case (left on the video):
+
+1.1) For a triangle, let a,b,c be the sidelengths. A well-known relation is (Eq. 13)[1]:
+
+|X3X4|=Sqrt[9 R^2-(a^2+b^2+c^2)]
+
+Since in our current Poncelet pair, R is by defn fixed, and the sum of sidelengths is conserved, so will the distance between circumcenter and orthocenter.  Notice by defn X3 is at the origin, so X4 locus must be a circle, as shown in the video (dashed red circle). 
+
+1.2) For a triangle another well known relation is (Eq 16)[1]:
+
+the sum of squared distances from X4 to vertices is 12R^2-(a^2+b^2+c^2).
+
+Shown in the video are the "spokees" (dashed red) connecting X4 to each vertex. The sum of their lengths squared is dynamically conserved.
+
+2) Let's consider N greater than 3 (right on the video shows N=5).
+
+Recall the barycentrics of X4 are tanA,tanB,tanC (Orthocenter)[1]. So let's define a pseudo-Orthocenter pX4 for N greater than 3 computed as the weighted average of the vertices where the weights are tan[θi] (*). Interestingly:
+
+2.1) for odd N, the distance |pX4-X3| continues to be conserved, i.e., pX4 will move on a circle (dashed red). For even N, pX4 is stationary at O.
+
+2.2) for all N the sum of squared spoke distances is conserved. In the special case of even N, since pX4=O, said spokes are diameters of the external circle, so the property is obvious.
+
+---
+
+(*) this is akin to the Steiner Curvature Centroid of a polygon, which is the weighted sum vertices with weights sin[2θi], and therefore is a pseudo-Circumcenter pX3.
+
+[1] Eric Weisstein, MathWorld, 2020. https://mathworld.wolfram.com/

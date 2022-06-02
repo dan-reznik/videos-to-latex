@@ -1,0 +1,23 @@
+Start from a base curve (black) defined as :
+
+C(t) = [x(t),y(t)] = [ 2 cos(t) - sin(2t)/4 + (3/10) cos(2t), sin(t) + (3/4) cos(2t)]
+
+and compute its Steiner curvature centroid K, i.e., the average of curve points (taken as a finely sampled polygon), each weighed by the sin(2 theta). Numerically, for C(t) this yields:
+
+K= [0.185793, 0.0197731]
+
+Now choose a point M in the plane. In this case it is the point on a circle of radius 1.25 (could be anything), centered on K, counterclockwise 220 degrees from horizontal, i.e.:
+
+M= [ -0.771762, -0.783711 ].
+
+Shown are the pedal (red) and contrapedal (green) curves of C(t) with respect to the above M.
+
+Also shown is the linearly interpolated curve (blue) of pedal and contrapedal, i.e., at every t compute:
+
+interpolated(t) = (1- mu) pedal(t) + mu contrapedal(t)
+
+Letting mu vary from -.25 to 1.25.
+
+Note: a dashed-gray circle of radius 1.25 is shown around K, since, as shown in another video [1], the area of the pedal, contrapedal, and interpolated pedal, is constant for all points on that circle.
+
+[1] D. Reznik, "Invariant Area of Interpolated Pedal", 2021. https://youtu.be/gR8Axe823_M

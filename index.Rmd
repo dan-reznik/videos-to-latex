@@ -9,43 +9,58 @@ library(jsonlite)
 library(glue)
 library(rvest)
 library(httr)
+library(lubridate)
 source("utils.R")
 source("utils_youtube.R")
 ```
 
-Subs to do
+Read video spreadsheet, and retrieve info from youtube, save to .rds
 
 
 ```{r}
 #df_videos <- read_csv("data/Elliptic Billiards Media - videos.csv")
+#df_videos_descr <- get_videos_descr(df_videos,"data/videos_descr.rds")
 ```
 
-Add video description using YouTube API (slow, 390 videos)
-
-```{r}
-#df_videos_descr <- df_videos %>%
-  #slice(300:390) %>%
-#  mutate(video_id=str_remove_all(Video1,"http[s?]://youtu.be/")) %>%
-#  mutate(descr=video_id %>% map_chr(get_video_descr))
-#df_videos_descr %>% write_rds("data/videos_descr.rds","bz2")
-```
+Retrieve video data from precalculated file (see above)
 
 ```{r}
 df_videos_descr <- read_rds("data/videos_descr.rds")
 ```
 
+```{r}
+download_thumb <- function(dir,url,video_id) {
+  download.file(url, str_glue("{dir}/{video_id}.jpg"), quiet=T, mode = 'wb')
+}
+```
 
-Make an itemize for each group.
+Save video thumbnails to "pics" subdir (slow)
+
+```{r}
+# walk2(df_videos_descr$thumb_url,df_videos_descr$video_id,
+#      ~download_thumb("pics",..1,..2))
+```
+
+Save descriptions to "descr" subdir (slow)
+
+```{r}
+pmap(list(df_videos_descr$id,df_videos_descr$video_id,df_videos_descr$descr),
+~write_file(..3,sprintf("descr/%03d_%s.tex",as.integer(..1),..2)))
+```
+
+
+Make a list of items (or subsections) for each group.
 
 ```{r}
 list_videos <- df_videos_descr %>%
   group_by(Section) %>%
-  group_map(make_enum) 
-  # group_map(make_subsec) 
+  arrange(date) %>%
+  group_map(make_enum_video)  # make_subsec, make_enum_long
 # list_videos %>% head(3)
 ```
 
-Combine all strings.
+
+Combine items in each group.
 
 ```{r}
 str_videos <- list_videos %>%
@@ -53,13 +68,15 @@ str_videos <- list_videos %>%
   str_c(collapse="\n")
 ```
 
-Needs to use the "enumitem" package:
+Make latex document: insert preamble, begin, end document
 
 ```{r}
-glue("{read_file('data/preamble.txt')}",
-     "{str_videos}",
-     "\\end{{document}}\n") %>%
-  write_file("data/main.tex")
+str_glue("{read_file('data/preamble.txt')}",
+         "{str_videos}\n\n",
+         "\\bibliographystyle{{alpha}}\n",
+         "\\bibliography{{refs}\n\n",
+         "\\end{{document}}\n") %>%
+  write_file("main.tex")
 ```
 
 
