@@ -1,5 +1,5 @@
-library(httr)
-library(stringr)
+#library(httr)
+#library(stringr)
 
 # see: https://www.yuichiotsuka.com/youtube-data-extract-r/
 key <- "AIzaSyCeBljlBtzlUB8oPYs4t9Y8GOhgCdJ12LA"
@@ -12,6 +12,7 @@ base <- "https://www.googleapis.com/youtube/v3/"
 fmt_dur_str <- function(dur) {
   str_replace(dur,"^PT(\\d+?)M(\\d+?)S$","\\1m\\2s")
 }
+
 # "PT2M25S" => (2,25)
 extr_dur_m_s <- function(dur) {
   m_s <- str_replace(dur,"^PT(\\d+?)M(\\d+?)S$","\\1,\\2")
@@ -41,7 +42,10 @@ get_video_descr <- function(video) {
   date <- channel.json$items$snippet.publishedAt
   # PT<int>M<int>S
   duration <- channel.json$items$contentDetails.duration
-  list(thumb_url=thumb_url,descr=descr,date=as.Date(date),duration=fmt_dur_str(duration))
+  list(thumb_url=thumb_url,
+       descr=descr,
+       date=as.Date(date),
+       duration=duration)
 }
 
 get_videos_descr <- function(df,fname) {
@@ -54,6 +58,10 @@ get_videos_descr <- function(df,fname) {
            thumb_url=descr_url$thumb_url,
            date=descr_url$date,
            duration=descr_url$duration)
-  df_descr %>% write_rds("fname","bz2")
+  df_descr %>% write_rds(fname,"bz2")
   df_descr
+}
+
+download_thumb <- function(dir,url,video_id) {
+  download.file(url, str_glue("{dir}/{video_id}.jpg"), quiet=T, mode = 'wb')
 }

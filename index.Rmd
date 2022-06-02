@@ -28,12 +28,6 @@ Retrieve video data from precalculated file (see above)
 df_videos_descr <- read_rds("data/videos_descr.rds")
 ```
 
-```{r}
-download_thumb <- function(dir,url,video_id) {
-  download.file(url, str_glue("{dir}/{video_id}.jpg"), quiet=T, mode = 'wb')
-}
-```
-
 Save video thumbnails to "pics" subdir (slow)
 
 ```{r}
@@ -44,8 +38,8 @@ Save video thumbnails to "pics" subdir (slow)
 Save descriptions to "descr" subdir (slow)
 
 ```{r}
-pmap(list(df_videos_descr$id,df_videos_descr$video_id,df_videos_descr$descr),
-~write_file(..3,sprintf("descr/%03d_%s.tex",as.integer(..1),..2)))
+#pmap(list(df_videos_descr$id,df_videos_descr$video_id,df_videos_descr$descr),
+#~write_file(..3,sprintf("descr/%03d_%s.tex",as.integer(..1),..2)))
 ```
 
 
@@ -74,7 +68,7 @@ Make latex document: insert preamble, begin, end document
 str_glue("{read_file('data/preamble.txt')}",
          "{str_videos}\n\n",
          "\\bibliographystyle{{alpha}}\n",
-         "\\bibliography{{refs}\n\n",
+         "\\bibliography{{refs,refs_pub,refs_acc,refs_sub}\n\n",
          "\\end{{document}}\n") %>%
   write_file("main.tex")
 ```
