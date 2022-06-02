@@ -2,9 +2,7 @@
 #library(stringr)
 
 # see: https://www.yuichiotsuka.com/youtube-data-extract-r/
-key <- "AIzaSyCeBljlBtzlUB8oPYs4t9Y8GOhgCdJ12LA"
-channel <- "UCJ3BPNdm0z1UzcJYTwxlsjA"
-user <- "dreznik"
+source("key.R")
 base <- "https://www.googleapis.com/youtube/v3/"
 
 # https://youtu.be/wiknzClcm4s
