@@ -1,5 +1,5 @@
 \documentclass[12pt]{amsart}
-\input{setup}
+\input{000_setup}
 
 \title{Videos of Experiments (2019--2022)}
 
