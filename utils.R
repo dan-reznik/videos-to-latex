@@ -76,7 +76,7 @@ make_subsec_entry_video <- function(df) {
                    "\\label{{vid:{video_id}}}\n",
                    "\\noindent N={N}, {fmt_dur_str(duration)} ({month(date)}/{year(date)}). ",
                    "{make_center_video(video_fname,Video1)}\n",
-                   "% \\input{{descr/{sprintf('%03d',id)}_{video_id}}}\n"))
+                   "% \\input{{descr/{sprintf('%03d',id)}_{video_id}}}\n\n"))
   df_coll <- df_str$str %>% str_c(collapse="\n")
   df_coll
 }
