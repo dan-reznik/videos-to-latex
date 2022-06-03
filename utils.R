@@ -67,14 +67,16 @@ make_enum_entry_video <- function(df) {
   str_glue("\\begin{{enumerate}}[resume]\n{df_coll}\n\\end{{enumerate}}\n")
 }
 
-
-make_subsec_entry_long <- function(df) {
+make_subsec_entry_video <- function(df) {
   df_str <- df %>%
     # mutate(str=glue("\\item \\textit{{{clean_title(Title)}}}, {Year}. \\href{{{Video1}}}{{\\url{{{clean_video(Video1)}}}}}"))
-    mutate(str=str_glue("\n\\subsection{{{clean_title(Title)}}}\n",
-                    "Duration: {fmt_dur_str(duration)}. Published: {month(date)}/{year(date)}. N: {N}. ",
-                    "\\href{{{Video1}}}{{\\url{{{clean_video(Video1)}}}}}\n\n",
-                    "{clean_title(descr)}\n"))
+    mutate(
+      video_fname = str_glue("pics/{video_id}.jpg"),
+      str=str_glue("\\subsection{{{clean_title(Title)}}}\n",
+                   "\\label{{vid:{video_id}}}\n",
+                   "\\noindent N={N}, {fmt_dur_str(duration)} ({month(date)}/{year(date)}). ",
+                   "{make_center_video(video_fname,Video1)}\n",
+                   "% \\input{{descr/{sprintf('%03d',id)}_{video_id}}}\n"))
   df_coll <- df_str$str %>% str_c(collapse="\n")
   df_coll
 }
@@ -87,7 +89,7 @@ make_enum_video <- function(df,key) {
   str_glue("\\section{{{clean_title(key)} ({nrow(df)})}\n\n{make_enum_entry_video(df)}\n\n")
 }
 
-make_subsec <- function(df,key) {
-  str_glue("\\section{{{clean_title(key)} ({nrow(df)})}\n\n{make_subsec_entry_long(df)}\n\n")
+make_subsec_video <- function(df,key) {
+  str_glue("\\section{{{clean_title(key)} ({nrow(df)})}\n\n{make_subsec_entry_video(df)}\n\n")
 }
 

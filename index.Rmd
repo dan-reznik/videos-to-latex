@@ -16,6 +16,7 @@ source("utils_youtube.R")
 
 Read video spreadsheet, and retrieve info from youtube, save to .rds
 
+need to only take those videos that exist.
 
 ```{r}
 #df_videos <- read_csv("data/Elliptic Billiards Media - videos.csv")
@@ -31,15 +32,16 @@ df_videos_descr <- read_rds("data/videos_descr.rds")
 Save video thumbnails to "pics" subdir (slow)
 
 ```{r}
-# walk2(df_videos_descr$thumb_url,df_videos_descr$video_id,
+#walk2(df_videos_descr$thumb_url,df_videos_descr$video_id,
 #      ~download_thumb("pics",..1,..2))
 ```
 
 Save descriptions to "descr" subdir (slow)
 
 ```{r}
-#pmap(list(df_videos_descr$id,df_videos_descr$video_id,df_videos_descr$descr),
-#~write_file(..3,sprintf("descr/%03d_%s.tex",as.integer(..1),..2)))
+#df_videos_descr %>%
+#  select(id,video_id,descr) %>%
+#  pwalk(~write_file(..3, sprintf("descr/%03d_%s.tex",as.integer(..1),..2)))
 ```
 
 
@@ -49,7 +51,7 @@ Make a list of items (or subsections) for each group.
 list_videos <- df_videos_descr %>%
   group_by(Section) %>%
   arrange(date) %>%
-  group_map(make_enum_video)  # make_subsec, make_enum_long
+  group_map(make_subsec_video)  # make_subsec, make_enum_long
 # list_videos %>% head(3)
 ```
 

@@ -1784,6 +1784,7 @@ source(&quot;utils_youtube.R&quot;)</code></pre>
 <!-- rnb-text-begin -->
 <p>Read video spreadsheet, and retrieve info from youtube, save to
 .rds</p>
+<p>need to only take those videos that exist.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2RmX3ZpZGVvcyA8LSByZWFkX2NzdihcImRhdGEvRWxsaXB0aWMgQmlsbGlhcmRzIE1lZGlhIC0gdmlkZW9zLmNzdlwiKVxuI2RmX3ZpZGVvc19kZXNjciA8LSBnZXRfdmlkZW9zX2Rlc2NyKGRmX3ZpZGVvcyxcImRhdGEvdmlkZW9zX2Rlc2NyLnJkc1wiKVxuYGBgIn0= -->
@@ -1803,29 +1804,30 @@ source(&quot;utils_youtube.R&quot;)</code></pre>
 <p>Save video thumbnails to “pics” subdir (slow)</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB3YWxrMihkZl92aWRlb3NfZGVzY3IkdGh1bWJfdXJsLGRmX3ZpZGVvc19kZXNjciR2aWRlb19pZCxcbiMgICAgICB+ZG93bmxvYWRfdGh1bWIoXCJwaWNzXCIsLi4xLC4uMikpXG5gYGAifQ== -->
-<pre class="r"><code># walk2(df_videos_descr$thumb_url,df_videos_descr$video_id,
-#      ~download_thumb(&quot;pics&quot;,..1,..2))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2FsazIoZGZfdmlkZW9zX2Rlc2NyJHRodW1iX3VybCxkZl92aWRlb3NfZGVzY3IkdmlkZW9faWQsXG4gICAgICB+ZG93bmxvYWRfdGh1bWIoXCJwaWNzXCIsLi4xLC4uMikpXG5gYGAifQ== -->
+<pre class="r"><code>walk2(df_videos_descr$thumb_url,df_videos_descr$video_id,
+      ~download_thumb(&quot;pics&quot;,..1,..2))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Save descriptions to “descr” subdir (slow)</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI3BtYXAobGlzdChkZl92aWRlb3NfZGVzY3IkaWQsZGZfdmlkZW9zX2Rlc2NyJHZpZGVvX2lkLGRmX3ZpZGVvc19kZXNjciRkZXNjciksXG4jfndyaXRlX2ZpbGUoLi4zLHNwcmludGYoXCJkZXNjci8lMDNkXyVzLnRleFwiLGFzLmludGVnZXIoLi4xKSwuLjIpKSlcbmBgYCJ9 -->
-<pre class="r"><code>#pmap(list(df_videos_descr$id,df_videos_descr$video_id,df_videos_descr$descr),
-#~write_file(..3,sprintf(&quot;descr/%03d_%s.tex&quot;,as.integer(..1),..2)))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfdmlkZW9zX2Rlc2NyICU+JVxuICBzZWxlY3QoaWQsdmlkZW9faWQsZGVzY3IpICU+JVxuICBwd2Fsayh+d3JpdGVfZmlsZSguLjMsIHNwcmludGYoXCJkZXNjci8lMDNkXyVzLnRleFwiLGFzLmludGVnZXIoLi4xKSwuLjIpKSlcbmBgYCJ9 -->
+<pre class="r"><code>df_videos_descr %&gt;%
+  select(id,video_id,descr) %&gt;%
+  pwalk(~write_file(..3, sprintf(&quot;descr/%03d_%s.tex&quot;,as.integer(..1),..2)))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Make a list of items (or subsections) for each group.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlzdF92aWRlb3MgPC0gZGZfdmlkZW9zX2Rlc2NyICU+JVxuICBncm91cF9ieShTZWN0aW9uKSAlPiVcbiAgYXJyYW5nZShkYXRlKSAlPiVcbiAgZ3JvdXBfbWFwKG1ha2VfZW51bV92aWRlbykgICMgbWFrZV9zdWJzZWMsIG1ha2VfZW51bV9sb25nXG4jIGxpc3RfdmlkZW9zICU+JSBoZWFkKDMpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlzdF92aWRlb3MgPC0gZGZfdmlkZW9zX2Rlc2NyICU+JVxuICBhcnJhbmdlKGRhdGUpICU+JVxuICBncm91cF9ieShTZWN0aW9uKSAlPiVcbiAgZ3JvdXBfbWFwKG1ha2Vfc3Vic2VjX3ZpZGVvKSAgIyBtYWtlX3N1YnNlYywgbWFrZV9lbnVtX2xvbmdcbiMgbGlzdF92aWRlb3MgJT4lIGhlYWQoMylcbmBgYCJ9 -->
 <pre class="r"><code>list_videos &lt;- df_videos_descr %&gt;%
-  group_by(Section) %&gt;%
   arrange(date) %&gt;%
-  group_map(make_enum_video)  # make_subsec, make_enum_long
+  group_by(Section) %&gt;%
+  group_map(make_subsec_video)  # make_subsec, make_enum_long
 # list_videos %&gt;% head(3)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -1855,7 +1857,7 @@ source(&quot;utils_youtube.R&quot;)</code></pre>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkNvbnZlcnQgLkNTViBHb29nbGUgU2hlZXRzIHRvIExhdGV4Ig0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KYGBge3J9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoanNvbmxpdGUpDQpsaWJyYXJ5KGdsdWUpDQpsaWJyYXJ5KHJ2ZXN0KQ0KbGlicmFyeShodHRyKQ0KbGlicmFyeShsdWJyaWRhdGUpDQpzb3VyY2UoInV0aWxzLlIiKQ0Kc291cmNlKCJ1dGlsc195b3V0dWJlLlIiKQ0KYGBgDQoNClJlYWQgdmlkZW8gc3ByZWFkc2hlZXQsIGFuZCByZXRyaWV2ZSBpbmZvIGZyb20geW91dHViZSwgc2F2ZSB0byAucmRzDQoNCg0KYGBge3J9DQojZGZfdmlkZW9zIDwtIHJlYWRfY3N2KCJkYXRhL0VsbGlwdGljIEJpbGxpYXJkcyBNZWRpYSAtIHZpZGVvcy5jc3YiKQ0KI2RmX3ZpZGVvc19kZXNjciA8LSBnZXRfdmlkZW9zX2Rlc2NyKGRmX3ZpZGVvcywiZGF0YS92aWRlb3NfZGVzY3IucmRzIikNCmBgYA0KDQpSZXRyaWV2ZSB2aWRlbyBkYXRhIGZyb20gcHJlY2FsY3VsYXRlZCBmaWxlIChzZWUgYWJvdmUpDQoNCmBgYHtyfQ0KZGZfdmlkZW9zX2Rlc2NyIDwtIHJlYWRfcmRzKCJkYXRhL3ZpZGVvc19kZXNjci5yZHMiKQ0KYGBgDQoNClNhdmUgdmlkZW8gdGh1bWJuYWlscyB0byAicGljcyIgc3ViZGlyIChzbG93KQ0KDQpgYGB7cn0NCiMgd2FsazIoZGZfdmlkZW9zX2Rlc2NyJHRodW1iX3VybCxkZl92aWRlb3NfZGVzY3IkdmlkZW9faWQsDQojICAgICAgfmRvd25sb2FkX3RodW1iKCJwaWNzIiwuLjEsLi4yKSkNCmBgYA0KDQpTYXZlIGRlc2NyaXB0aW9ucyB0byAiZGVzY3IiIHN1YmRpciAoc2xvdykNCg0KYGBge3J9DQojcG1hcChsaXN0KGRmX3ZpZGVvc19kZXNjciRpZCxkZl92aWRlb3NfZGVzY3IkdmlkZW9faWQsZGZfdmlkZW9zX2Rlc2NyJGRlc2NyKSwNCiN+d3JpdGVfZmlsZSguLjMsc3ByaW50ZigiZGVzY3IvJTAzZF8lcy50ZXgiLGFzLmludGVnZXIoLi4xKSwuLjIpKSkNCmBgYA0KDQoNCk1ha2UgYSBsaXN0IG9mIGl0ZW1zIChvciBzdWJzZWN0aW9ucykgZm9yIGVhY2ggZ3JvdXAuDQoNCmBgYHtyfQ0KbGlzdF92aWRlb3MgPC0gZGZfdmlkZW9zX2Rlc2NyICU+JQ0KICBncm91cF9ieShTZWN0aW9uKSAlPiUNCiAgYXJyYW5nZShkYXRlKSAlPiUNCiAgZ3JvdXBfbWFwKG1ha2VfZW51bV92aWRlbykgICMgbWFrZV9zdWJzZWMsIG1ha2VfZW51bV9sb25nDQojIGxpc3RfdmlkZW9zICU+JSBoZWFkKDMpDQpgYGANCg0KDQpDb21iaW5lIGl0ZW1zIGluIGVhY2ggZ3JvdXAuDQoNCmBgYHtyfQ0Kc3RyX3ZpZGVvcyA8LSBsaXN0X3ZpZGVvcyAlPiUNCiAgbWFwX2Nocih+LngpICU+JQ0KICBzdHJfYyhjb2xsYXBzZT0iXG4iKQ0KYGBgDQoNCk1ha2UgbGF0ZXggZG9jdW1lbnQ6IGluc2VydCBwcmVhbWJsZSwgYmVnaW4sIGVuZCBkb2N1bWVudA0KDQpgYGB7cn0NCnN0cl9nbHVlKCJ7cmVhZF9maWxlKCdkYXRhL3ByZWFtYmxlLnR4dCcpfSIsDQogICAgICAgICAie3N0cl92aWRlb3N9XG5cbiIsDQogICAgICAgICAiXFxiaWJsaW9ncmFwaHlzdHlsZXt7YWxwaGF9fVxuIiwNCiAgICAgICAgICJcXGJpYmxpb2dyYXBoeXt7cmVmcyxyZWZzX3B1YixyZWZzX2FjYyxyZWZzX3N1Yn1cblxuIiwNCiAgICAgICAgICJcXGVuZHt7ZG9jdW1lbnR9fVxuIikgJT4lDQogIHdyaXRlX2ZpbGUoIm1haW4udGV4IikNCmBgYA0KDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkNvbnZlcnQgLkNTViBHb29nbGUgU2hlZXRzIHRvIExhdGV4Ig0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KYGBge3J9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoanNvbmxpdGUpDQpsaWJyYXJ5KGdsdWUpDQpsaWJyYXJ5KHJ2ZXN0KQ0KbGlicmFyeShodHRyKQ0KbGlicmFyeShsdWJyaWRhdGUpDQpzb3VyY2UoInV0aWxzLlIiKQ0Kc291cmNlKCJ1dGlsc195b3V0dWJlLlIiKQ0KYGBgDQoNClJlYWQgdmlkZW8gc3ByZWFkc2hlZXQsIGFuZCByZXRyaWV2ZSBpbmZvIGZyb20geW91dHViZSwgc2F2ZSB0byAucmRzDQoNCm5lZWQgdG8gb25seSB0YWtlIHRob3NlIHZpZGVvcyB0aGF0IGV4aXN0Lg0KDQpgYGB7cn0NCiNkZl92aWRlb3MgPC0gcmVhZF9jc3YoImRhdGEvRWxsaXB0aWMgQmlsbGlhcmRzIE1lZGlhIC0gdmlkZW9zLmNzdiIpDQojZGZfdmlkZW9zX2Rlc2NyIDwtIGdldF92aWRlb3NfZGVzY3IoZGZfdmlkZW9zLCJkYXRhL3ZpZGVvc19kZXNjci5yZHMiKQ0KYGBgDQoNClJldHJpZXZlIHZpZGVvIGRhdGEgZnJvbSBwcmVjYWxjdWxhdGVkIGZpbGUgKHNlZSBhYm92ZSkNCg0KYGBge3J9DQpkZl92aWRlb3NfZGVzY3IgPC0gcmVhZF9yZHMoImRhdGEvdmlkZW9zX2Rlc2NyLnJkcyIpDQpgYGANCg0KU2F2ZSB2aWRlbyB0aHVtYm5haWxzIHRvICJwaWNzIiBzdWJkaXIgKHNsb3cpDQoNCmBgYHtyfQ0KI3dhbGsyKGRmX3ZpZGVvc19kZXNjciR0aHVtYl91cmwsZGZfdmlkZW9zX2Rlc2NyJHZpZGVvX2lkLA0KIyAgICAgIH5kb3dubG9hZF90aHVtYigicGljcyIsLi4xLC4uMikpDQpgYGANCg0KU2F2ZSBkZXNjcmlwdGlvbnMgdG8gImRlc2NyIiBzdWJkaXIgKHNsb3cpDQoNCmBgYHtyfQ0KI2RmX3ZpZGVvc19kZXNjciAlPiUNCiMgIHNlbGVjdChpZCx2aWRlb19pZCxkZXNjcikgJT4lDQojICBwd2Fsayh+d3JpdGVfZmlsZSguLjMsIHNwcmludGYoImRlc2NyLyUwM2RfJXMudGV4Iixhcy5pbnRlZ2VyKC4uMSksLi4yKSkpDQpgYGANCg0KDQpNYWtlIGEgbGlzdCBvZiBpdGVtcyAob3Igc3Vic2VjdGlvbnMpIGZvciBlYWNoIGdyb3VwLg0KDQpgYGB7cn0NCmxpc3RfdmlkZW9zIDwtIGRmX3ZpZGVvc19kZXNjciAlPiUNCiAgZ3JvdXBfYnkoU2VjdGlvbikgJT4lDQogIGFycmFuZ2UoZGF0ZSkgJT4lDQogIGdyb3VwX21hcChtYWtlX3N1YnNlY192aWRlbykgICMgbWFrZV9zdWJzZWMsIG1ha2VfZW51bV9sb25nDQojIGxpc3RfdmlkZW9zICU+JSBoZWFkKDMpDQpgYGANCg0KDQpDb21iaW5lIGl0ZW1zIGluIGVhY2ggZ3JvdXAuDQoNCmBgYHtyfQ0Kc3RyX3ZpZGVvcyA8LSBsaXN0X3ZpZGVvcyAlPiUNCiAgbWFwX2Nocih+LngpICU+JQ0KICBzdHJfYyhjb2xsYXBzZT0iXG4iKQ0KYGBgDQoNCk1ha2UgbGF0ZXggZG9jdW1lbnQ6IGluc2VydCBwcmVhbWJsZSwgYmVnaW4sIGVuZCBkb2N1bWVudA0KDQpgYGB7cn0NCnN0cl9nbHVlKCJ7cmVhZF9maWxlKCdkYXRhL3ByZWFtYmxlLnR4dCcpfSIsDQogICAgICAgICAie3N0cl92aWRlb3N9XG5cbiIsDQogICAgICAgICAiXFxiaWJsaW9ncmFwaHlzdHlsZXt7YWxwaGF9fVxuIiwNCiAgICAgICAgICJcXGJpYmxpb2dyYXBoeXt7cmVmcyxyZWZzX3B1YixyZWZzX2FjYyxyZWZzX3N1Yn1cblxuIiwNCiAgICAgICAgICJcXGVuZHt7ZG9jdW1lbnR9fVxuIikgJT4lDQogIHdyaXRlX2ZpbGUoIm1haW4udGV4IikNCmBgYA0KDQoNCg==</div>
 
 
 
